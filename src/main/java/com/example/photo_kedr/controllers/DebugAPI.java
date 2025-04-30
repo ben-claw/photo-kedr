@@ -15,11 +15,11 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/api")
-public class RestAPI {
+@RequestMapping("/debug-api")
+public class DebugAPI {
     private final UserRepository userRepository;
     
-    RestAPI(UserRepository userRepository){
+    DebugAPI(UserRepository userRepository){
         this.userRepository = userRepository;
     }
 
