@@ -1,13 +1,13 @@
-package com.example.demo.repositories;
+package com.example.photo_kedr.repositories;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class PhotoRepository {
+public class AlbumRepository {
     private final JdbcTemplate jdbcTemplate;
     
-    public PhotoRepository(JdbcTemplate jdbcTemplate) {
+    public AlbumRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 }

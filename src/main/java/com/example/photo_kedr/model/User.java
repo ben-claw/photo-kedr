@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.photo_kedr.model;
 
 import lombok.AllArgsConstructor;
 

@@ -1,4 +1,4 @@
-package com.example.demo.repositories;
+package com.example.photo_kedr.repositories;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,7 +8,7 @@ import java.util.Optional;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.model.User;
+import com.example.photo_kedr.model.User;
 
 import lombok.extern.slf4j.Slf4j;
 

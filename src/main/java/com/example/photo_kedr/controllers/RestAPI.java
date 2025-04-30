@@ -1,4 +1,4 @@
-package com.example.demo.controllers;
+package com.example.photo_kedr.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.User;
-import com.example.demo.repositories.UserRepository;
+import com.example.photo_kedr.model.User;
+import com.example.photo_kedr.repositories.UserRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
