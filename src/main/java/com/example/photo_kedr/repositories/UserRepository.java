@@ -1,11 +1,13 @@
 package com.example.photo_kedr.repositories;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.example.photo_kedr.model.User;
@@ -45,5 +47,23 @@ public class UserRepository {
             "SELECT * FROM Users", 
             (rs, _num) -> mapUser(rs)
         );
+    }
+
+    public User add(User newUser){
+        GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
+        jdbcTemplate.update(
+            connection -> {
+                PreparedStatement ps = connection.prepareStatement(
+                    "INSERT INTO Users (login, password, privileges) values (?,?,?)",
+                    new String[] {"id"});
+                ps.setString(1, newUser.getLogin());
+                ps.setString(2, newUser.getPassword());
+                ps.setInt(3, newUser.getPrivileges());
+                return ps;
+            },
+            keyHolder
+        );
+        newUser.setId(keyHolder.getKey().intValue());
+        return newUser;
     }
 }
