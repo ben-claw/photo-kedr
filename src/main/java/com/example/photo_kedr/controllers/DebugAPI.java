@@ -45,4 +45,9 @@ public class DebugAPI {
              return null;
          }
     }
+
+    @PostMapping("/users/update")
+    void update(@RequestBody User user){
+         userRepository.update(user);
+    }
 }

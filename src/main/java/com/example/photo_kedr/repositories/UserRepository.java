@@ -66,4 +66,12 @@ public class UserRepository {
         newUser.setId(keyHolder.getKey().intValue());
         return newUser;
     }
+
+    public void update(User user){
+        jdbcTemplate.update(
+            "UPDATE Users SET login=?, password=?, privileges=? WHERE id=?",
+            user.getLogin(), user.getPassword(), user.getPrivileges(),
+            user.getId()
+        );
+    }
 }
