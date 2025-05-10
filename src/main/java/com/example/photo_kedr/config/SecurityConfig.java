@@ -34,6 +34,7 @@ class SecurityConfig {
         	//.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Disable session
         	.authorizeHttpRequests(auth -> auth
     		    .requestMatchers("/api/**").permitAll()
+    		    .requestMatchers("/css/**").permitAll()
     		    .anyRequest().authenticated()
     		)
             //.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
