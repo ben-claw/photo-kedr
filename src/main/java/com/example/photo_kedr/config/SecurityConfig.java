@@ -33,10 +33,14 @@ class SecurityConfig {
         	//.csrf(csrf -> csrf.disable()) // Disable CSRF
         	//.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Disable session
         	.authorizeHttpRequests(auth -> auth
-    		    .requestMatchers("/api/**").permitAll()
+    		    .requestMatchers("/").permitAll()
     		    .requestMatchers("/css/**").permitAll()
     		    .anyRequest().authenticated()
     		)
+            .formLogin(form -> form
+                //generate default login page
+                .permitAll()
+            )
             //.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
             .build();
 	}
