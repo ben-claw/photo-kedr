@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Моя страница — Photo Kedr</title>
+</head>
+<body>
+<main>
+    <h1>Страница пользователя</h1>
+    <p>Вы вошли как <strong th:text="${user.login}">пользователь</strong>.</p>
+    <p>Идентификатор: <span th:text="${user.id}">1</span></p>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Выйти</button>
+    </form>
+</main>
+</body>
+</html>

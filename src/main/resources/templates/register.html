@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Регистрация — Photo Kedr</title>
+</head>
+<body>
+<main>
+    <h1>Создать аккаунт</h1>
+
+    <p th:if="${error}" th:text="${error}" role="alert"></p>
+
+    <form th:action="@{/register}" th:object="${registrationForm}" method="post">
+        <p>
+            <label for="login">Имя пользователя</label>
+            <input id="login" type="text" th:field="*{login}" minlength="3" maxlength="32" required autocomplete="username">
+        </p>
+        <p>
+            <label for="password">Пароль (не менее 8 символов)</label>
+            <input id="password" type="password" th:field="*{password}" minlength="8" required autocomplete="new-password">
+        </p>
+        <p>
+            <label for="passwordConfirmation">Повторите пароль</label>
+            <input id="passwordConfirmation" type="password" th:field="*{passwordConfirmation}" minlength="8" required autocomplete="new-password">
+        </p>
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+
+    <p><a th:href="@{/login}">Уже есть аккаунт? Войти</a></p>
+</main>
+</body>
+</html>

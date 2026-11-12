@@ -3,45 +3,27 @@ package com.example.photo_kedr.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 class SecurityConfig {
-    final private String passwordEncoding = "none";
-    
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/debug-api/**");
-    }
-
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return switch (passwordEncoding) {
-            case "none" -> NoOpPasswordEncoder.getInstance();
-            case "bcrypt" -> new BCryptPasswordEncoder();
-            default -> NoOpPasswordEncoder.getInstance(); //TODO
-        };
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
-	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		return http
-        	//.csrf(csrf -> csrf.disable()) // Disable CSRF
-        	//.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Disable session
-        	.authorizeHttpRequests(auth -> auth
-    		    .requestMatchers("/").permitAll()
-    		    .requestMatchers("/css/**").permitAll()
-    		    .anyRequest().authenticated()
-    		)
-            .formLogin(form -> form
-                //generate default login page
-                .permitAll()
-            )
-            //.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-            .build();
-	}
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        return http
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/", "/register", "/css/**").permitAll()
+                        .anyRequest().authenticated())
+                .formLogin(form -> form
+                        .defaultSuccessUrl("/user", true)
+                        .permitAll())
+                .logout(logout -> logout.logoutSuccessUrl("/"))
+                .build();
+    }
 }
