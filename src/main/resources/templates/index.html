@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="https://www.thymeleaf.org">
-    <head>
-        <title>Photo Kedr</title>
-    </head>
-    <body>
-        <h1>Welcome!</h1>
-        <p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
-    </body>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Photo Kedr — фотоальбом</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<main class="page-shell">
+    <section class="card hero-card">
+        <p class="eyebrow">Ваши моменты — в одном месте</p>
+        <h1>Photo Kedr</h1>
+        <p class="intro">Создавайте свой фотоальбом, делитесь снимками и открывайте фотографии других пользователей.</p>
+        <nav class="actions" aria-label="Действия с аккаунтом">
+            <a class="button button-primary" th:href="@{/login}">Войти</a>
+            <a class="button button-secondary" th:href="@{/register}">Зарегистрироваться</a>
+        </nav>
+    </section>
+</main>
+</body>
 </html>

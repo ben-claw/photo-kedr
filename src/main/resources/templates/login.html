@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Войти — Photo Kedr</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<main class="page-shell">
+    <section class="card form-card">
+        <a class="text-link back-link" th:href="@{/}">← На главную</a>
+        <h1>Войти</h1>
+
+        <p class="notice notice-success" th:if="${registered}" role="status">
+            Регистрация прошла успешно. Теперь можно войти.
+        </p>
+        <p class="notice notice-error" th:if="${loginError}" role="alert">
+            Не удалось войти. Проверьте имя пользователя и пароль.
+        </p>
+
+        <form class="form" th:action="@{/login}" method="post">
+            <label for="username">Имя пользователя</label>
+            <input id="username" name="username" type="text" required autocomplete="username">
+
+            <label for="password">Пароль</label>
+            <input id="password" name="password" type="password" required autocomplete="current-password">
+
+            <button class="button button-primary button-full" type="submit">Войти</button>
+        </form>
+
+        <p class="form-footer">Ещё нет аккаунта? <a class="text-link" th:href="@{/register}">Зарегистрироваться</a></p>
+    </section>
+</main>
+</body>
+</html>

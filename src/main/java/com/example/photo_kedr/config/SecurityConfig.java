@@ -18,9 +18,10 @@ class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/register", "/css/**").permitAll()
+                        .requestMatchers("/", "/login", "/register", "/css/**").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form
+                        .loginPage("/login")
                         .defaultSuccessUrl("/user", true)
                         .permitAll())
                 .logout(logout -> logout.logoutSuccessUrl("/"))

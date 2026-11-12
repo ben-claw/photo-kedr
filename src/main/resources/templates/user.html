@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Моя страница — Photo Kedr</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
 </head>
 <body>
-<main>
-    <h1>Страница пользователя</h1>
-    <p>Вы вошли как <strong th:text="${user.login}">пользователь</strong>.</p>
-    <p>Идентификатор: <span th:text="${user.id}">1</span></p>
-    <form th:action="@{/logout}" method="post">
-        <button type="submit">Выйти</button>
-    </form>
+<main class="page-shell">
+    <section class="card profile-card">
+        <p class="eyebrow">Личный кабинет</p>
+        <h1>Привет, <span th:text="${user.login}">пользователь</span>!</h1>
+        <p class="intro">Это ваша страница Photo Kedr. Скоро здесь появятся ваши альбомы и фотографии.</p>
+        <p class="profile-meta">ID пользователя: <span th:text="${user.id}">1</span></p>
+        <form th:action="@{/logout}" method="post">
+            <button class="button button-secondary" type="submit">Выйти</button>
+        </form>
+    </section>
 </main>
 </body>
 </html>
