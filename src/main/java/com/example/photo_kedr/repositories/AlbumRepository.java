@@ -5,9 +5,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class AlbumRepository {
-    private final JdbcTemplate jdbcTemplate;
-    
-    public AlbumRepository(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+	private final JdbcTemplate jdbcTemplate;
+
+	public AlbumRepository(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
 }

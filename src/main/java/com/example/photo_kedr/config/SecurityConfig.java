@@ -9,22 +9,33 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 class SecurityConfig {
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
-    @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/login", "/register", "/css/**").permitAll()
-                        .anyRequest().authenticated())
-                .formLogin(form -> form
-                        .loginPage("/login")
-                        .defaultSuccessUrl("/user", true)
-                        .permitAll())
-                .logout(logout -> logout.logoutSuccessUrl("/"))
-                .build();
-    }
+	@Bean
+	SecurityFilterChain securityFilterChain(HttpSecurity http)
+		throws Exception {
+		return http
+			.authorizeHttpRequests(
+				auth -> auth
+					.requestMatchers(
+						"/",
+						"/login",
+						"/register",
+						"/css/**"
+					)
+					.permitAll()
+					.anyRequest()
+					.authenticated()
+			)
+			.formLogin(
+				form -> form.loginPage("/login")
+					.defaultSuccessUrl("/user", true)
+					.permitAll()
+			)
+			.logout(logout -> logout.logoutSuccessUrl("/"))
+			.build();
+	}
 }

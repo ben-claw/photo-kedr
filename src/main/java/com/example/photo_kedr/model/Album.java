@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Album {
-    int id;
-    int owner;
-    String descriptoin;
+	int id;
+	int owner;
+	String descriptoin;
 }

@@ -4,8 +4,7 @@ import lombok.Data;
 
 @Data
 public class Photo {
-    int id;
-    int owner;
-    String descriptoin;
-    
+	int id;
+	int owner;
+	String descriptoin;
 }
