@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${album.name} + ' — Photo Kedr'">Альбом — Photo Kedr</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<main class="page-shell">
+    <section class="card profile-card">
+        <a class="text-link back-link" th:href="@{/user}">← На мою страницу</a>
+        <p class="eyebrow">Фотоальбом</p>
+        <h1 th:text="${album.name}">Название альбома</h1>
+        <p class="intro">В этом альбоме пока нет фотографий.</p>
+    </section>
+</main>
+</body>
+</html>

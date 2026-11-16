@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Добавить альбом — Photo Kedr</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<main class="page-shell">
+    <section class="card form-card">
+        <a class="text-link back-link" th:href="@{/user}">← На мою страницу</a>
+        <p class="eyebrow">Новая коллекция</p>
+        <h1>Добавить альбом</h1>
+        <p class="intro">Придумайте название, чтобы легко находить свои фотографии.</p>
+        <p class="notice notice-error" th:if="${error}" th:text="${error}" role="alert"></p>
+        <form class="form" th:action="@{/albums}" th:object="${albumForm}" method="post">
+            <label for="name">Название альбома</label>
+            <input id="name" type="text" th:field="*{name}" maxlength="100" required autofocus>
+            <button class="button button-primary button-full" type="submit">Создать альбом</button>
+        </form>
+    </section>
+</main>
+</body>
+</html>

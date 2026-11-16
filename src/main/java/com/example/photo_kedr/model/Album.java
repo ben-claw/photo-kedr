@@ -1,10 +1,14 @@
 package com.example.photo_kedr.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Album {
-	int id;
-	int owner;
-	String descriptoin;
+	private int id;
+	private int owner;
+	private String name;
 }

@@ -1,5 +1,6 @@
 package com.example.photo_kedr.controllers;
 
+import com.example.photo_kedr.services.AlbumService;
 import com.example.photo_kedr.services.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -11,9 +12,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UserController {
 	private final UserService userService;
+	private final AlbumService albumService;
 
-	public UserController(UserService userService) {
+	public UserController(
+		UserService userService,
+		AlbumService albumService
+	) {
 		this.userService = userService;
+		this.albumService = albumService;
 	}
 
 	@GetMapping("/register")
@@ -24,7 +30,8 @@ public class UserController {
 
 	@PostMapping("/register")
 	public String register(
-		@ModelAttribute RegistrationForm registrationForm, Model model
+		@ModelAttribute RegistrationForm registrationForm,
+		Model model
 	) {
 		if (registrationForm.getPassword() == null || !registrationForm
 			.getPassword()
@@ -47,9 +54,11 @@ public class UserController {
 
 	@GetMapping("/user")
 	public String profile(Authentication authentication, Model model) {
+		var user = userService.getProfile(authentication.getName());
+		model.addAttribute("user", user);
 		model.addAttribute(
-			"user",
-			userService.getProfile(authentication.getName())
+			"albums",
+			albumService.getAlbumsForOwner(user.id())
 		);
 		return "user";
 	}
