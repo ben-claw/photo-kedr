@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
 	@GetMapping("/login")
 	public String loginPage(
-		@RequestParam(name = "error", required = false) String error,
-		@RequestParam(name = "registered", required = false) String registered,
+		@RequestParam(required = false) String error,
+		@RequestParam(required = false) String registered,
 		Model model
 	) {
 		model.addAttribute("loginError", error != null);
