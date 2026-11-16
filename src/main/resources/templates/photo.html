@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${photo.description} + ' — Photo Kedr'">Фотография — Photo Kedr</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<main class="page-shell page-shell-top">
+    <section class="card profile-card photo-detail-card">
+        <a class="text-link back-link" th:href="@{/albums/{id}(id=${photo.albumId})}">← Назад в альбом</a>
+        <p class="eyebrow">Фотография</p>
+        <img class="photo-full" th:src="@{/photos/{id}/image(id=${photo.id})}" th:alt="${photo.description}">
+        <p class="notice notice-error" th:if="${error}" th:text="${error}" role="alert"></p>
+        <form class="form photo-details-form" th:action="@{/photos/{id}(id=${photo.id})}" th:object="${photoForm}" method="post">
+            <label for="description">Описание</label>
+            <input id="description" type="text" th:field="*{description}" maxlength="500" required>
+            <label for="date">Дата фотографии</label>
+            <input id="date" type="date" th:field="*{date}" required>
+            <button class="button button-primary" type="submit">Сохранить</button>
+        </form>
+    </section>
+</main>
+</body>
+</html>
